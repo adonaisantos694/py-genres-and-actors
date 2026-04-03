@@ -1,7 +1,8 @@
+from django.db.models import QuerySet
 from db.models import Genre, Actor
 
 
-def main():
+def main() -> QuerySet[Actor]:
     # CREATE
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
@@ -22,12 +23,12 @@ def main():
     )
 
     Actor.objects.filter(first_name="Kianu", last_name="Reaves").update(
-        first_name="Keanu", last_name="Reeves"
+        first_name="Keanu",
+        last_name="Reeves",
     )
 
     # DELETE
     Genre.objects.filter(name="Action").delete()
-
     Actor.objects.filter(first_name="Scarlett").delete()
 
     # RETURN
